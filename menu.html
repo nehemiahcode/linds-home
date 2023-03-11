@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/f8c8d43adc.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body,html {
+            scroll-behavior: smooth;
+            height: 100%;
+            width:100vw;
+            overflow-x: hidden;
+              
+        }
+      
+        body {
+            background-color: rgba(22, 21, 21,0.5);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        /* .container { */
+            /* max-width:968px; */
+            /* margin: auto;*/
+        /* }         */
+        .section {
+            /* padding: 7rem 0 2rem; */
+            padding-top:4rem;
+        }
+        .section_title {
+            font-size: 2.5rem;
+            color:black;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .section__height {
+            height:auto;
+        }
+        .header {
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            z-index: 1000;
+            height: 60px;
+            transition: 0.4s;
+            background-color: white;
+            display: block;
+        }
+      
+        .nav {
+            height: 4.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav_logo {
+            color:black;
+            font-weight: 700;
+            font-size: 1.25rem;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        /* .nav_item:nth-last-child() {
+            padding-right: 9rem;
+        } */
+        .nav_name {
+            font-weight: 600;
+        }
+        .nav_icon {
+            font-size: 1.5rem;
+        }
+        .nav_list, .nav_link {
+            display: flex;
+
+        }
+        .nav_list {
+            justify-content: space-around;
+            column-gap: 5rem;
+            padding-bottom: 10px;
+        }
+        .nav_link {
+            flex-direction: column;
+            align-items: center;
+            color:black;
+            row-gap:0.25rem;
+        }
+        .nav_link:hover {
+            color:#5b75ad;
+        }
+         .nav_icon  {
+            display: none;
+        }
+        .active_link {
+            position: relative;
+            color:rgb(209, 128, 22);
+            transition: 0.3s;
+        }
+        @media screen and (min-width:769px) {
+         .active_link::before {
+            content: "";
+            position: absolute;
+            bottom: -.4rem;
+            width:2.8rem;
+            height:3px;
+            background-color: #5b75ad;
+            border-radius: 3px;
+        }
+       
+        } 
+
+        /* @media screen and (max-width:992px) {
+            .container {
+                margin-right: 1rem;
+                margin-left: 1rem;
+            }
+
+        } */
+        @media screen and (max-width:768px) {
+            .nav_menu {
+                position: fixed;
+                bottom: 0;
+                left:0;
+                background-color: white;
+                width:100%;
+                height:4rem;
+                padding: 0 1rem;
+                display: grid;
+                align-content: center;
+                border-radius: 1.2rem 1.25rem 0 0;
+                transition: .4s;
+                box-shadow: 0 -1px 12px rgba(59,59,59,0.25);
+            }
+            .header {
+                position: sticky;
+            }
+            .header {
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            z-index: 100;
+            transition: 0.4s;
+            background-color: white;
+        } 
+        .header.hide {
+            display: none;
+            transition: 1s;
+        }
+            .nav {
+                height:3rem
+            }
+             .nav_icon {
+                display: block;
+            }
+            .section_title {
+                font-size: 1.5rem;
+            }
+            .nav_list {
+            justify-content: space-around;
+            column-gap: 1rem;
+            padding-bottom: 10px;
+        }
+         .active_link {
+            position: relative;
+            color:rgb(209, 128, 22);
+            transition: 0.3s;
+        }
+        .nav_name {
+            font-weight: 600;
+            color:rgb(0, 0, 0);
+        }
+       
+        }
+        @media screen and (min-width:576px) {
+            .nav_list {
+                justify-content: center;
+            }
+        }
+        .columns {
+            width: 50%;
+            float:left;
+           
+        }
+        .columns3 {
+            float:left;
+            width:33.33%;
+            background-color: black;
+        }
+        .row::after {
+            display: table;
+            clear: both;
+            content: "";
+        }
+        @media screen and (max-width:600px) {
+            .columns {
+                width:100%;
+            }
+            .columns3 {
+                width:100%;
+            }
+            .img2 {
+        width:90%;
+        height:300px;
+        cursor: pointer;
+    }
+        }
+         .image-container {
+            position: relative;
+            text-align: center;
+            color:white;
+         }
+         .left-text {
+            position: absolute;
+            top:40%;
+            left:10%;
+            transform: translate(-50%, -50%);
+            padding-left: 11.5rem;
+            padding-top: 3rem;
+         }
+
+         .h4 {
+              font-weight: bold;
+              font-size: 19px;
+              text-align: left;
+              color:rgb(209, 128, 22);
+              padding-bottom: 10px;
+              padding-left: 1rem;
+          }
+          .h42 {
+              font-weight: bold;
+              font-size: 19px;
+              text-align: left;
+              color:rgb(209, 128, 22);
+              padding-bottom: 10px;
+            
+          }
+          .icons {
+           font-size: 65px;
+           color:rgb(209, 128, 22);
+           padding-left:1.2rem;
+           padding-top: 10px;
+           }
+           .icons:hover {
+           color:rgb(209, 128,12);
+           }
+           #text4 {
+           padding-left: 13px;
+          padding-right: 10px;
+        
+          }
+         #para {
+         padding-left:13px ;
+         padding-right: 10px;
+          }
+
+         .h5 {
+         font-weight: bold;
+          font-size: 19px;
+         color:rgb(209, 128, 22);
+         text-align: center;
+         padding-top: 1rem;
+         padding-bottom: 1.5rem;
+         /* padding-bottom: 10px;
+         padding-left: 10px;  */
+}  
+.p1, #text1, #text2{
+    padding-left: 1rem;
+    color:white;
+    padding-right: 10px;
+}
+.p1 {
+    padding-bottom: 1rem;
+}
+
+#text1, #text2, #text3 {
+    font-weight: 600;
+    font-size: 23px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.text3 {
+    font-weight: 600;
+    font-size: 23px;
+    padding-top: 10px;
+    padding-left: 1rem;
+}
+.button2 {
+    margin-left: 0.6rem;
+}
+
+#text3 {
+    color:white;
+    text-align: center;
+}
+#text1::after {
+    content: "";
+    display: block;
+    width:70px;
+    padding-top: 10px;
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+#text2::after {
+    content: "";
+    display: block;
+    width:70px;
+    padding-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+#text4::after {
+    content: "";
+    display: block;
+    width:70px;
+    padding-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+.second-image {
+    background-image: url('make-up4.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:50%;
+    height:200px;
+    float: right;
+    object-fit: cover;
+    margin-right: 10px;
+}
+#img {
+    margin-top: 40px;
+    margin-left: 20px;
+}
+#skin {
+    font-size: 35px;
+    font-weight: 500;
+    color:rgb(255, 255, 255);
+    font-family:sans-serif;
+    text-transform: uppercase;
+    text-align: left;
+    /* padding-left: 69px;
+    padding-bottom: 5px; */
+}
+.learn-more-button  {
+    width:170px;
+    height:50px;
+    padding-left: 19px;
+    /* margin-left: 110px; */
+    outline: none;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    background: white;
+    color:black;
+    font-size: 17px;
+    font-weight: 300;
+    transition: 0.5s ease;
+    cursor: pointer;
+    border-radius: 30px;
+    float: left;
+    border: 1px solid black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.learn-more-button i {
+    padding-left: 5px;
+}
+.learn-more-button:hover {
+   background: black;
+   color:white;
+   border: 1px solid white;
+}
+.container-overlay {
+    position: relative;
+    /* width:100%; 
+    max-width: 300px; */
+}
+/* .img2 {
+    display: block;
+    width:100%;
+} */
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0,0,0);
+    background: rgba(0, 0, 0, 0.5);
+    color:#f1f1f1;
+    width:95%;
+    transition: .5s ease;
+    opacity: 0;
+    color:white;
+    padding: 20px;
+    margin-left: 10px;
+    /* margin-right: 80px; */
+    font-size: 20px;
+    text-align: center;
+}
+.container-overlay:hover .overlay-text {
+    opacity: 1;
+}
+
+.contact {
+    position: relative;
+    /* min-height: 100vh; */
+    /* padding: 50px 100px; */
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+ .contact .content {
+    min-width: 800px;
+    text-align: center;
+}
+
+.contact .content h2 {
+    font-size: 36px;
+    font-weight: 500;
+    color:#fff;
+}
+.contact .content p {
+    font-weight: 300;
+    color:#fff;
+}
+.containers {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.containers .contactInfo {
+    width:50%;
+    display: flex;
+    flex-direction: column;
+}
+.containers .contactInfo .box {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+.containers .contactInfo .box .form-icon {
+    min-width: 60px;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+}
+.containers .contactInfo .box .form-icon:hover {
+    background-color:rgb(209, 128, 22); 
+    transition: 0.5s;
+    animation: iconna 1s infinite;
+}
+@keyframes iconna {
+    0% {background-color:rgb(209, 128, 22);}
+    100% {background-color: white;}
+}
+.containers .contactInfo .box .text {
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color:#fff;
+    flex-direction: column;
+    font-weight: 300;
+}
+.containers .contactInfo .box .texts h3 {
+  font-weight: 500;
+  color:#00bcd4;
+}
+.contactForm {
+    width:40%;
+    padding: 40px;
+    background-color: white;
+}
+.contactForm h2 {
+    font-size: 30px;
+    color:#333;
+    font-weight: 500;
+}
+.contactForm .inputBox {
+    position: relative;
+    width:100%;
+    margin-top: 10px;
+}
+.contactForm .inputBox input,
+.contactForm .inputBox textarea {
+    width:100%;
+    padding:5px 0;
+    font-size: 16px;
+    margin:10px 0;
+    border:none;
+    border-bottom: 2px solid #333;
+    outline: none;
+    resize: none;
+}
+.contactForm .inputBox span {
+    position: absolute;
+    left:0;
+    padding:5px 0;
+    font-size: 16px;
+    margin:10px 0;
+    pointer-events: none;
+    transition: 0.5s;
+    color:#666;
+}
+.contactForm .inputBox input:focus ~ span,
+.contactForm .inputBox input:valid ~ span,
+.contactForm .inputBox textarea:focus ~ span,
+.contactForm .inputBox textarea:valid ~ span {
+  color:#e91e63;
+  font-size: 12px;
+  transform:translateY(-20px);
+}
+.contactForm .inputBox input[type="submit"] {
+    width: 120px;
+    background-color: black;
+    color:white;
+    border: none;
+    cursor: pointer;
+    height:50px;
+    padding: 10px;
+    font-size: 18px;
+}
+.contactForm .inputBox input[type="submit"]:hover {
+    background-color: white;
+    color:rgb(0, 0, 0);
+    border: 2px solid black;
+}
+
+@media screen and (max-width:991px) {
+    .contact {
+        padding: 50px;
+       
+    }
+    .containers {
+        flex-direction: column;
+    }
+    .containers .contactInfo {
+        margin-bottom: 40px;
+    }
+    .containers .contactInfo,
+    .contactForm {
+        width:100%;
+    } 
+}
+
+
+
+    </style>
+
+</head>
+<body>
+<header class="header header-hidden" id="header">
+    <nav class="nav container">
+        <a href="#" class="nav_logo">LOGO</a>
+        <div class="nav_menu" id="nav-menu">
+            <ul class="nav_list">
+                <li class="nav_item">
+                    <a href="#home" class="nav_link active_link">
+                        <i class="fa fa-home nav_icon"></i>
+               <span class="nav_name">HOME</span>
+                </a>
+            </li>
+
+            <li class="nav_item">
+                <a href="#about" class="nav_link">
+                    <i class="fa fa-user nav_icon"></i>
+                   <span class="nav_name">ABOUT</span>
+               </a>
+            </li>
+
+        <li class="nav_item">
+            <a href="#services" class="nav_link">
+                <i class="fa fa-box nav_icon"></i>
+               <span class="nav_name">SERVICES</span>
+            </a>
+       </li>
+
+         <li class="nav_item">
+            <a href="#contact" class="nav_link">
+                 <i class="fa fa-phone nav_icon"></i>
+                 <span class="nav_name">CONTACT</span>
+            </a>
+        </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+
+<main>
+    <section class="container section section__height" id="home">
+        <!-- <h2 class="section_title">HOME</h2> -->
+
+           <div class="row">
+            <div class="columns" width="100%"   height="400px">
+             <div class="image-container">
+                <img src="Web capture_7-3-2023_9450_www.canva.com.jpeg" width="100%" height="400px">
+                <div class="left-text">
+                    <h4 class="h42">MAKE UP ARTIST.<br>HAIR STYLIST.</h4>
+                 <h2 id="skin">WELCOME<br>TO LIN'S TOUCH<br>BEAUTY SALON</h2><br>
+                 <a href="#learn">
+                  <button class="learn-more-button">Learn More<i class="fa fa-arrow-right"></i></button>
+                 </a>
+                </div>
+
+             </div>
+               </div>
+
+               <div class="columns"  width="100%"   height="400px">
+                <h1 id="text1">TAKE TIME FOR<br> YOURSELF TODAY</h1><br>
+               <p class="p1">Inspired by Lin's Touch, we always strive to source your hair and skin with ingredients that respect your
+                your body, hair and skin.<br>
+                Our priority is to make your body look good.
+               </p><br>
+               <img  id="img"src="make-up5.jpg" width="40%" height="140px">
+               <div class="second-image">
+                 
+               </div>
+          
+               </div>
+            </div>
+        
+
+    </section>
+    <section>
+          <div class="row">
+            <h1 id="text2">WE BEAUTIFY YOU WITH QUALITY COSMETICS</h1>
+
+            <div class="columns3" width="100%" height="400px">
+              <i class="fa fa-ban icons"></i> <span id="text3">TOXINS FREE</span><br><br>
+              
+               <p class="p1">Our cosmetics are free of toxins that will damage<br>
+                your heart earned skins. and make you look younger.
+               </p>
+            </div>
+           
+            <div class="columns3" width="100%" height="400px">
+              <i class="fa-solid fa-leaf icons"></i> <span id="text3">TESTED</span><br><br>
+      
+              <p class="p1">All our products are tested and trusted by NAFDAC for your safety.<br>
+                which makes it qualified for your body.
+    
+              </p>
+            </div>
+            <div class="columns3" width="100%" height="400px">
+              <i class="fa-solid fa-dna icons"></i> <span id="text3">PRESENTABLE</span><br><br>
+         
+              <p class="p1">Presentable products can give you a big impression on your looks.<br>
+                Contact us now for your beautification now!
+              </p>
+            </div>
+          </div>
+    </section>
+
+    <section class="container section section__height" id="about">
+
+     <div class="row">        
+        <div class="columns" width="100%" height="500px" height="auto">
+            <h4 class="h4" >ABOUT ME</h4>
+            <h3 id="text4"class="text3">YOUR BEAUTY STARTS HERE</h3><br>
+            <p id="para">Hello, i'm Linda a professional Makeup Artist / Hair Stylist.<br>
+               With many years of working experience and interactions.<br>
+               Explore through my page and see what i can do for you.<br>
+            </p>
+          <br><br>
+          <div id="para">
+            <i class="fa fa-circle-check"  style="color:rgb(209, 128, 22);font-size: 29px;"></i>&nbsp;&nbsp;
+            <span>I have spent more than 8 years in brightening<br>
+                   the looks of my customers,in respect to their hairs.<br>
+                  And i have also spent not less than 5 years<br>
+                   as a Makeup Artist in beautifying the looks of my customers.
+            </span>
+          </div>
+          <a href="https://linds-fashion-home-explore.netlify.app">
+            <button class="learn-more-button button2">EXPLORE<i class="fa fa-arrow-right"></i></button>
+          </a>
+      
+          </div>
+  
+          <div class="columns" width="500px" height="auto">
+            <img src="2349123013838_status_7ba962e071c4451cb406ba2274b54867.jpg" width="100%" height="380px" class="mySlides" alt="picture">
+            <img src="hair-style2.jpg" width="100%"class="mySlides" height="380px" alt="hair-picture.jpg">
+            <img src="make-up3.jpg" width="100%"class="mySlides" height="380px" alt="make up picture2.jpg">
+            <img src="make-up-picturee.jpg" width="100%"class="mySlides" height="380px" alt="make up picture.jpg">
+            <img src="original-linad-pic.jpg" width="100%"class="mySlides" height="380px" alt="Linda picture.jpg">
+            <img src="images22.jpg" width="100%"class="mySlides" height="380px" alt="make-up-picture.jpg">
+          </div>
+     </div>
+      
+    </section>
+    <section class="container section section__height" id="services">
+     <center>
+
+    
+        <h4 class="h5">WHAT WE DO</h4>
+          <h2 id="text3">OUR SERVICES</h2>
+          <div class="columns3" height="auto">
+
+            <div class="container-overlay">
+              <img src="hd-make-up-pics.jpg" width="95%" height="200px" class="img2" alt="make-up-picture">
+              <div class="overlay-text">
+              Bridal Makeup
+              </div>
+            </div>
+           
+      </div>
+
+      <div class="columns3"  height="auto">
+
+        <div class="container-overlay">
+        <img src="best-image-grid.jpg" width="95%" height="200px" class="img2" alt="images">
+        <div class="overlay-text">
+         Weaving
+        </div>
+        </div>
+     
+      </div>
+
+      <div class="columns3"  height="auto">
+
+        <div class="container-overlay">
+        <img src="hair-ties-pic.jpg" width="95%" height="200px" class="img2" alt="hair-pictures">
+        <div class="overlay-text">
+        Hair Tie
+        </div>
+        </div>
+    </center>
+      </div>
+
+    </section>
+
+    <section class="container contact  section section__height" id="contact">
+       <div class="content">
+        <h2>Contact Us</h2>
+        <p>Some textes</p>
+       </div>
+                  <div class="containers">
+                    <div class="contactInfo">
+                        <div class="box">
+                            <div class="form-icon"><i class="fa fa-location-dot"></i></div>
+                            <div class="texts">
+                                <h3>Address</h3>
+                                <p>My location</p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="form-icon"><i class="fa fa-phone-volume"></i></div>
+                            <div class="texts">
+                                <h3>Phone</h3>
+                                <p>My number</p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="form-icon"><i class="fa fa-envelope"></i></div>
+                            <div class="texts">
+                                <h3>Email</h3>
+                                <p>MyEmail</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contactForm">
+                        <form action="">
+                            <h2>Send Us A message</h2>
+                            <div class="inputBox">
+                                <input type="text" name="" required="required">
+                                <span>Full Name</span>
+                            </div>
+
+                            <div class="inputBox">
+                                <input type="email" name="" required="required">
+                                <span>Email</span>
+                            </div>
+
+                            <div class="inputBox">
+                            <textarea name="" id="" cols="30" rows="10" required="required"></textarea>
+                                <span>Your Mesage</span>
+                            </div>
+                            <div class="inputBox">
+                                <input type="submit" name="Send" value="SEND">
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+    </section>
+</main>
+    <script>
+
+        const sections = document.querySelectorAll('section[id]');
+
+        function scrollActive() {
+            const scrollY = window.pageYOffset;
+            sections.forEach((current) => {
+                const sectionHeight = current.offsetHeight;
+                const scetionTop = current.offsetTop - 50;
+                const sectionId = current.getAttribute('id');
+                if (scrollY > scetionTop && scrollY <= scetionTop + sectionHeight) {
+                    document.querySelector(".nav_menu a[href*=" + sectionId + ']').classList.add("active_link");
+                }else {
+                    document.querySelector(".nav_menu a[href*=" + sectionId + ']').classList.remove("active_link");
+                }
+            });
+        }
+        window.addEventListener("scroll", scrollActive)
+    </script>
+    <script>
+         var lastScrollTop = 0;
+      window.addEventListener("scroll", function(){
+      var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop){
+       // Scrolling down
+       document.querySelector('.header').classList.add('hide');
+     } else {
+       // Scrolling up
+         document.querySelector('.header').classList.remove('hide');
+      }
+        lastScrollTop = currentScroll;
+     }, false);
+
+     var showSlides = 0
+        showSlide()
+        function showSlide() {
+            var i;
+            var imageToSlide = document.getElementsByClassName("mySlides");
+            for (i = 0; i < imageToSlide.length; i++) {
+                imageToSlide[i].style.display = "none";
+            }
+            showSlides++;
+            if (showSlides > imageToSlide.length) {
+                showSlides = 1;
+            }
+            imageToSlide[showSlides-1].style.display = "block";
+            setTimeout(showSlide, 2000);
+        }
+    </script>
+</body>
+</html>
